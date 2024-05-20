@@ -1,4 +1,4 @@
-package br.com.fiap.Sorteio.controller;
+package br.com.fiap.Sorteio.Dado;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -9,21 +9,28 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("dado")
-@Tag(name = "dado", description = "Endpoint relacionados ao dado")
+@Tag(name = "Dado", description = "Endpoint relacionado ao dado")
 public class DadoController {
     
     @GetMapping    
+    @Operation(summary = "Rola o dado com valor de 1 a 6")
     public int rolarDado(){     
-        return (int)(Math.random() * 6) + 1;  
+        Dado dado = new Dado();
+        dado.setNumero((int)(Math.random() * 6) + 1);              
+        return dado.getNumero();  
     }
 
     @GetMapping("{maximo}")    
+    @Operation(summary = "Rola o dado com valor máximo personalizado")
     public int rolarDadoMaximo(@PathVariable int maximo){
-        return (int)(Math.random() * maximo) + 1;
+        Dado dado = new Dado();
+        dado.setNumero((int)(Math.random() * maximo) + 1);              
+        return dado.getNumero();
     }
 
 }

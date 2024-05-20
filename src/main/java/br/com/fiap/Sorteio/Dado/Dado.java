@@ -1,10 +1,12 @@
-package br.com.fiap.Sorteio.controller;
+package br.com.fiap.Sorteio.Dado;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.springframework.hateoas.EntityModel;
 
+import lombok.Data;
+@Data
 public class Dado {
     private int numero;
     
